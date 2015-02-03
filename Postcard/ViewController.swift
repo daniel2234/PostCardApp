@@ -9,6 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var messageLabel: UILabel!// reference to UI Element //set label to lines to 0 or 2 to wrap the text
+    @IBOutlet weak var enterNameTextField: UITextField!
+    @IBOutlet weak var enterMessageTextField: UITextField!
+    @IBOutlet weak var mailButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +27,16 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func sendMailButtonPressed(sender: UIButton) {
+        messageLabel.hidden = false
+        messageLabel.text = enterMessageTextField.text // set to get
+        messageLabel.textColor = UIColor.redColor() // info on data gets coloured in red
+        
+        enterMessageTextField.text = ""
+        enterMessageTextField.resignFirstResponder() // make keyboard go away
+        
+        mailButton.setTitle("Mail Sent", forState: UIControlState.Normal)// function will update a property
+    }
 
 }
 
